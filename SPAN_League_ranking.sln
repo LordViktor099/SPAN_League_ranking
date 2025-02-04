@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPAN_League_ranking", "SPAN_League_ranking.csproj", "{F6BD3F06-F34A-440F-AFF0-79BFE2CCAA94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SPAN_League_ranking", "SPAN_League_ranking.csproj", "{F6BD3F06-F34A-440F-AFF0-79BFE2CCAA94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3DCB8B5D-ABD8-40CE-BBB1-BBFC1CEE1FBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F6BD3F06-F34A-440F-AFF0-79BFE2CCAA94} = {3DCB8B5D-ABD8-40CE-BBB1-BBFC1CEE1FBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9D74FD2-DDAC-487C-8C67-6C8DB4F8DC8C}
