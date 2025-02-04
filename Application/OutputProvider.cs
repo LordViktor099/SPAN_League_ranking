@@ -9,10 +9,16 @@ namespace SPAN_League_ranking.Application
     }
     public class OutputProvider : IOutputProvider
     {
+        ITxtFileOuputFormatter formatter;
+
+        public OutputProvider(ITxtFileOuputFormatter formatter)
+        {
+            this.formatter = formatter;
+        }
+
         public void SendToOutput(Dictionary<ITeam, int> orderedRank)
         {
             const string outputFileName = "Output.txt";
-            var formatter = new TxtFileOutputFormatter();
             formatter.WriteToFile(outputFileName, orderedRank);
         }
     }

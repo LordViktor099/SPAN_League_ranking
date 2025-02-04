@@ -11,6 +11,12 @@ namespace SPAN_League_ranking.Application
     public class RankProvider : IRankProvider
     {
         private Dictionary<ITeam, int> rank;
+        private IPointAwarder pointAwarder;
+
+        public RankProvider(IPointAwarder pointAwarder)
+        {
+            this.pointAwarder = pointAwarder;
+        }
 
         public Dictionary<ITeam, int> GenerateRankForMatchday(List<IResult> results, HashSet<ITeam> teams)
         {
@@ -19,7 +25,6 @@ namespace SPAN_League_ranking.Application
                 rank.Add(team, 0);
             }
 
-            var pointAwarder = new PointAwarder();
             foreach (var result in results)
             {
                 var pointsAssignation = pointAwarder.AssignPoints(result);
