@@ -1,7 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Drawing;
-
-namespace SPAN_League_ranking.Domain
+﻿namespace SPAN_League_ranking.Domain
 {
     public interface ITeam
     {

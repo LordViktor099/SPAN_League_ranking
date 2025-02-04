@@ -9,5 +9,9 @@ var teamProvider = new TeamProvider();
 var teams = teamProvider.LoadTeamsInMemory(results);
 
 var rankProvider = new RankProvider();
-var output = rankProvider.GenerateRankForMatchday(results, teams);
-File.WriteAllLines("Output.txt", output);
+var rank = rankProvider.GenerateRankForMatchday(results, teams);
+var orderedRank = rankProvider.GetOrderedRank(rank);
+
+var outputProvider = new OutputProvider();
+outputProvider.SendToOutput(orderedRank);
+

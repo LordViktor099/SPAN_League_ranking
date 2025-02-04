@@ -4,14 +4,15 @@ namespace SPAN_League_ranking.Application
 {
     public interface IRankProvider
     {
-        List<string> GenerateRankForMatchday(List<IResult> results, HashSet<ITeam> teams);
+        Dictionary<ITeam, int> GenerateRankForMatchday(List<IResult> results, HashSet<ITeam> teams);
+        Dictionary<ITeam, int> GetOrderedRank(Dictionary<ITeam, int> unordedRank);
     }
 
     public class RankProvider : IRankProvider
     {
         private Dictionary<ITeam, int> rank;
 
-        public List<string> GenerateRankForMatchday(List<IResult> results, HashSet<ITeam> teams)
+        public Dictionary<ITeam, int> GenerateRankForMatchday(List<IResult> results, HashSet<ITeam> teams)
         {
             rank = new Dictionary<ITeam, int>();
             foreach (var team in teams) {
@@ -26,15 +27,14 @@ namespace SPAN_League_ranking.Application
                 rank[pointsAssignation.AwayTeam] = rank[pointsAssignation.AwayTeam] + pointsAssignation.AwayTeamPointsAwarded;
             }
 
-            var orderedRank = rank.OrderByDescending(t=>t.Value).ThenBy(t=>t.Key.Name).ToDictionary();
-
-            List<string> output = new List<string>();
-            foreach(var team in orderedRank.Keys)
-            {
-                output.Add($"{team.Name.ToString()}, {orderedRank[team].ToString()} pts");
-            }
-
-            return output;
+            return rank;
         }
+
+        public Dictionary<ITeam, int> GetOrderedRank(Dictionary<ITeam, int> unordedRank)
+        {
+            var orderedRank = rank.OrderByDescending(t=>t.Value).ThenBy(t=>t.Key.Name).ToDictionary();
+            return orderedRank;
+        }
+
     }
 }
